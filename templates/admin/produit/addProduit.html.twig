@@ -1,0 +1,6 @@
+{% extends "admin/layout.html.twig" %}
+{% block body %}
+    <div class="container">
+            {{ include('admin/produit/_formProduit.html.twig', {action: 'Créer'}) }}
+    </div>
+{% endblock %}

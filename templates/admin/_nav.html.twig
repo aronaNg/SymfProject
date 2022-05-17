@@ -1,0 +1,66 @@
+{#https://getbootstrap.com/docs/5.0/components/navbar/#}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: gray">
+    <a class="navbar-brand mx-3" href="#"><span style="color:#112A46;">Admin Sen Jaba</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="DropdownClient" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Clients
+                </a>
+                <div class="dropdown-menu" aria-labelledby="DropdownClient">
+                    <a class="dropdown-item" href="{{ path('client_panier_index') }}">Page des clients</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="DropdownEvenements" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Produits
+                </a>
+                <div class="dropdown-menu" aria-labelledby="DropdownProduits">
+                    <a class="dropdown-item" href="{{ path('admin_produit_show') }}">Gestion des produits</a>
+                    <a class="dropdown-item" href="{{ path('admin_produit_details') }}"> Détails des types de produit </a>
+                    <a class="dropdown-item" href="{{ path('admin_type_produit_index') }}"> Gestion des types de produit </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="DropdownStat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Voir les commandes clients
+                </a>
+                <div class="dropdown-menu" aria-labelledby="DropdownStat">
+                    <a class="dropdown-item" href="{{ path('commande_showAllCommandes')  }}">Voir les commandes</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="DropdownStat" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Voir les statistiques
+                </a>
+                <div class="dropdown-menu" aria-labelledby="DropdownStat">
+                    <a class="dropdown-item" href="#">Voir les statistiques</a>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav ms-auto">
+            <!-- Authentication Links -->
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <span class="navbar-text mr-2 h5">
+                    Bonjour {{ app.user.username }}
+                    {% if is_granted('ROLE_ADMIN') %} (role : Admin )
+                    {% elseif is_granted('ROLE_USER') %} (role : Client ) {% endif %}
+            </span>
+                <a class="btn btn-success mx-1 my-1" type="button" href="{{path('app_logout') }}">
+                    Se déconnecter
+                </a>
+            {% else %}
+                <a class="btn btn-outline-success mx-1 my-1" type="button" href="{{path('app_login') }}">
+                    Se connecter
+                </a>
+                <a class="btn btn-outline-success mx-1 my-1" type="button" href="{#{path('changePassword') }#}">
+                    Mot de passe oublié
+                </a>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
