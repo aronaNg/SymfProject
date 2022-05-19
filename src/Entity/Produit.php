@@ -41,10 +41,7 @@ class Produit
     private $prix;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     * @Assert\NotBlank(
-     *      message= "Donner une date"
-     * )
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateLancement;
 
